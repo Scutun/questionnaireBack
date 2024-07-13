@@ -5,6 +5,9 @@ const db = require('../db')
 class adminTitleController {
   async addTitle(title) {
     try {
+      if (title.titleName.length === 0) {
+        throw new Error()
+      }
       const newTitle = await db.query(`insert into title(name) values ('${title.titleName}') returning id_title as id`)
       return newTitle.rows[0]
     } catch (e) {
@@ -14,6 +17,9 @@ class adminTitleController {
   async getTitles() {
     try {
       const allTitles = await db.query(`select name from title`)
+      if (allTitles.rows.length === 0) {
+        throw new Error()
+      }
       return allTitles.rows
     } catch (e) {
       throw new Error()
