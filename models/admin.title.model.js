@@ -2,7 +2,7 @@ const express = require('express')
 const control = express()
 const db = require('../db')
 
-class adminModel {
+class adminTitleController {
   async addTitle(title) {
     try {
       const newTitle = await db.query(`insert into title(name) values ('${title.titleName}') returning id_title as id`)
@@ -48,4 +48,4 @@ class adminModel {
   }
 }
 
-module.exports = new adminModel()
+module.exports = new adminTitleController()

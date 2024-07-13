@@ -1,11 +1,13 @@
 const Router = require('express')
 const router = new Router()
-const adminController = require('../controllers/admin.action.controller')
+const adminTitleController = require('../controllers/admin.action.controller')
 
-router.post('/admin/title/create', adminController.createTitle)
-router.get('/admin/title/find', adminController.findTitles)
-router.put('/admin/title/update', adminController.renewTitle)
+//title CRUD
+router.post('/admin/title/create', adminTitleController.createTitle)
+router.get('/admin/title/find', adminTitleController.findTitles)
+router.put('/admin/title/update', adminTitleController.renewTitle)
+router.delete('/admin/title/delete/:id', adminTitleController.deletionTitle)
 
-router.delete('/admin/title/delete/:id', adminController.deletionTitle)
+//codes CRUD
 
 module.exports = router
