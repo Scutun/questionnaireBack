@@ -2,6 +2,7 @@ const express = require('express')
 const control = express()
 const modelTitle = require('../models/admin.title.model')
 const modelCode = require('../models/admin.codes.model')
+const modelQuestion = require('../models/admin.questions.model')
 
 class adminController {
   //title CRUD
@@ -70,6 +71,41 @@ class adminController {
       res.json(deletion)
     } catch (e) {
       res.sendStatus(404)
+    }
+  }
+  //
+  //
+  //questioms CRUD
+  async createQustion(req, res) {
+    try {
+      const newQuestion = await modelQuestion.addQuestion(req.body)
+      res.json(newQuestion)
+    } catch (e) {
+      res.sendStatus(400)
+    }
+  }
+  async findAllQuestions(req, res) {
+    try {
+      const getQuestions = await modelQuestion.getAllQuestions()
+      res.json(getQuestions)
+    } catch (e) {
+      res.sendStatus(404)
+    }
+  }
+  async renewQuestion(req, res) {
+    try {
+      const update = await modelQuestion.updateQuestion(req.body)
+      res.json(update)
+    } catch (e) {
+      res.sendStatus(400)
+    }
+  }
+  async deletionQuestion(req, res) {
+    try {
+      const deletion = await modelQuestion.deleteQuestion(req.params.id)
+      res.json(deletion)
+    } catch (e) {
+      res.json(404)
     }
   }
 }

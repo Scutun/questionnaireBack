@@ -14,4 +14,10 @@ router.get('/admin/code/find', adminController.findCodes)
 router.put('/admin/code/update', adminController.renewCode)
 router.delete('/admin/code/delete/:id', adminController.deletionCode)
 
+//questions CRUD
+router.post('/admin/question/create', adminController.createQustion)
+router.get('/admin/question/find', adminController.findAllQuestions)
+router.put('/admin/question/update', adminController.renewQuestion)
+router.delete('/admin/question/delete/:id', adminController.deletionQuestion)
+
 module.exports = router
