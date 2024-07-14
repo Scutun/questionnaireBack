@@ -2,7 +2,7 @@ const express = require('express')
 const control = express()
 const db = require('../db')
 
-class adminQuestionController {
+class adminQuestionModel {
   async addQuestion(question) {
     try {
       if (question.questionContent.length === 0) {
@@ -60,4 +60,4 @@ class adminQuestionController {
   }
 }
 
-module.exports = new adminQuestionController()
+module.exports = new adminQuestionModel()

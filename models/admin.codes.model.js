@@ -2,7 +2,7 @@ const express = require('express')
 const control = express()
 const db = require('../db')
 
-class adminCodesController {
+class adminCodesModel {
   async addCode(code) {
     try {
       if (code.codeName.length === 0) {
@@ -54,4 +54,4 @@ class adminCodesController {
   }
 }
 
-module.exports = new adminCodesController()
+module.exports = new adminCodesModel()

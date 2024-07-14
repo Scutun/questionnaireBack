@@ -2,7 +2,7 @@ const express = require('express')
 const control = express()
 const db = require('../db')
 
-class adminTitleController {
+class adminTitleModel {
   async addTitle(title) {
     try {
       if (title.titleName.length === 0) {
@@ -54,4 +54,4 @@ class adminTitleController {
   }
 }
 
-module.exports = new adminTitleController()
+module.exports = new adminTitleModel()

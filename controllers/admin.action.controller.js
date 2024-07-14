@@ -3,8 +3,20 @@ const control = express()
 const modelTitle = require('../models/admin.title.model')
 const modelCode = require('../models/admin.codes.model')
 const modelQuestion = require('../models/admin.questions.model')
+const modelLogIn = require('../models/admin.logIn.model')
 
 class adminController {
+  //log in
+  async logInAdmin(req, res) {
+    try {
+      const allow = await modelLogIn.logAdmin(req.body)
+      res.json(allow)
+    } catch (e) {
+      res.sendStatus(404)
+    }
+  }
+  //
+  //
   //title CRUD
   async createTitle(req, res) {
     try {
