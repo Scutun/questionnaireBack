@@ -8,7 +8,7 @@ class adminTitleModel {
       if (title.titleName.length === 0) {
         throw new Error()
       }
-      const newTitle = await db.query(`insert into title(name) values ('${title.titleName}') returning id_title as id`)
+      const newTitle = await db.query(`insert into title(name) values ('${title.titleName}') returning *`)
       return newTitle.rows[0]
     } catch (e) {
       throw new Error()

@@ -13,7 +13,7 @@ class adminQuestionModel {
         throw new Error()
       }
       const title = await db.query(`select id_title from title where name = '${question.questionTitle}'`)
-      const newQuestion = await db.query(`insert into questions(content, fk_title_id) values('${question.questionContent}', '${title.rows[0].id_title}') returning id_question`)
+      const newQuestion = await db.query(`insert into questions(content, fk_title_id) values('${question.questionContent}', '${title.rows[0].id_title}') returning *`)
       return newQuestion.rows[0]
     } catch (e) {
       throw new Error()

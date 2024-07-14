@@ -1,7 +1,7 @@
 const Router = require('express')
 const router = new Router()
 const adminController = require('../controllers/admin.action.controller')
-const checkToken = require('../middlewear/checkToken')
+const checkToken = require('../middleware/checkToken')
 
 router.use('/admin', checkToken)
 

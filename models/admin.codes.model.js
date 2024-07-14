@@ -8,7 +8,7 @@ class adminCodesModel {
       if (code.codeName.length === 0) {
         throw new Error()
       }
-      const newCode = await db.query(`insert into codes(name) values ('${code.codeName}') returning id_codes as id`)
+      const newCode = await db.query(`insert into codes(name) values ('${code.codeName}') returning *`)
       return newCode.rows[0]
     } catch (e) {
       throw new Error()
