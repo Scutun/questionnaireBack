@@ -12,7 +12,7 @@ class adminController {
       const allow = await modelLogIn.logAdmin(req.body)
       res.json(allow)
     } catch (e) {
-      res.sendStatus(404)
+      res.sendStatus(403)
     }
   }
   //
@@ -117,7 +117,7 @@ class adminController {
       const deletion = await modelQuestion.deleteQuestion(req.params.id)
       res.json(deletion)
     } catch (e) {
-      res.json(404)
+      res.sendStatus(404)
     }
   }
 }

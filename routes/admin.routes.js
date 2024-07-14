@@ -1,9 +1,13 @@
 const Router = require('express')
 const router = new Router()
 const adminController = require('../controllers/admin.action.controller')
+const checkToken = require('../middlewear/checkToken')
+
+router.use('/admin', checkToken)
 
 //log in
-router.post('/admin/logIn', adminController.logInAdmin)
+router.post('/logIn', adminController.logInAdmin)
+
 //title CRUD
 router.post('/admin/title/create', adminController.createTitle)
 router.get('/admin/title/find', adminController.findTitles)
