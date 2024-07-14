@@ -47,7 +47,7 @@ class adminCodesModel {
         throw new Error()
       }
       const deletion = await db.query(`delete from codes where id_codes = '${id}'`)
-      return id
+      return info.rows[0]
     } catch (e) {
       throw new Error()
     }

@@ -53,7 +53,7 @@ class adminQuestionModel {
         throw new Error()
       }
       const deletion = await db.query(`delete from questions where id_question = '${id}'`)
-      return id
+      return info.rows[0]
     } catch (e) {
       throw new Error()
     }

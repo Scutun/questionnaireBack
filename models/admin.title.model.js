@@ -47,7 +47,7 @@ class adminTitleModel {
         throw new Error()
       }
       const deletion = await db.query(`delete from title where id_title = '${id}'`)
-      return id
+      return info.rows[0]
     } catch (e) {
       throw new Error()
     }
