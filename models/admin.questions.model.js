@@ -21,9 +21,9 @@ class adminQuestionModel {
   }
   async getAllQuestions() {
     try {
-      const questions = await db.query(`select questions.id_question as id, questions.content, headline.name as headlineName, title.name as titleName from questions
-            join title on questions.fk_title_id = title.id_title
+      const questions = await db.query(`select questions.id_question as id, questions.content, headline.name as headlineName, title.name as titleName, hardness from questions
             join headline on questions.fk_headline_id = headline.id_headline
+            join title on questions.fk_title_id = title.id_title
 			      order by id_question`)
       return questions.rows
     } catch (e) {
