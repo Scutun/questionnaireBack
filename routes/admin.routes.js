@@ -8,6 +8,12 @@ router.use('/admin', checkToken)
 //log in
 router.post('/logIn', adminController.logInAdmin)
 
+//form CRUD
+router.post('/admin/headline/create', adminController.createHeadline)
+router.get('/admin/headline/find', adminController.findHeadline)
+router.put('/admin/headline/update', adminController.renewHeadline)
+router.delete('/admin/headline/delete/:id', adminController.deletionHeadline)
+
 //title CRUD
 router.post('/admin/title/create', adminController.createTitle)
 router.get('/admin/title/find', adminController.findTitles)
