@@ -6,12 +6,14 @@ class answerModel {
   async addAnswer(info) {
     try {
       const { answerCodeArr, questionIdArr, usersId } = info
+      if (questionIdArr.length !== answerCodeArr.length) {
+        throw new Error()
+      }
       for (let i = 0; i < questionIdArr.length; i++) {
         const answer = await db.query(`insert into answers(answer_code, fk_users_id, fk_questions_id) values ('${answerCodeArr[i]}', '${usersId}', '${questionIdArr[i]}');`)
       }
       return usersId
     } catch (e) {
-      console.log(e)
       throw new Error()
     }
   }
