@@ -12,8 +12,9 @@ class adminQuestionModel {
       if (info.rows.length !== 0) {
         throw new Error()
       }
-      const title = await db.query(`select id_title from title where name = '${question.questionTitle}'`)
-      const newQuestion = await db.query(`insert into questions(content, fk_title_id, fk_form_id) values('${question.questionContent}', '${title.rows[0].id_title}', '${question.form}') returning *`)
+      const newQuestion = await db.query(
+        `insert into questions(content, fk_title_id, fk_headline_id, hardness) values('${question.questionContent}', '${question.questionTitleId}', '${question.headline}', '${question.hardness}') returning *`
+      )
       return newQuestion.rows[0]
     } catch (e) {
       throw new Error()
@@ -21,7 +22,7 @@ class adminQuestionModel {
   }
   async getAllQuestions() {
     try {
-      const questions = await db.query(`select questions.id_question as id, questions.content, headline.name as headlineName, title.name as titleName, hardness from questions
+      const questions = await db.query(`select questions.id_question as id, questions.content, headline.name as headlineName, title.name as titleName from questions
             join headline on questions.fk_headline_id = headline.id_headline
             join title on questions.fk_title_id = title.id_title
 			      order by id_question`)
@@ -43,7 +44,7 @@ class adminQuestionModel {
         throw new Error()
       }
       const question = await db.query(
-        `update questions set content = '${updated.newContent}', fk_title_id = '${updated.newTitle}', fk_form_id = '${updated.newForm}' where id_question = '${updated.id}' returning *`
+        `update questions set content = '${updated.newContent}', fk_title_id = '${updated.newTitle}', fk_headline_id = '${updated.newHeadline}', hardness = '${updated.newHardness}' where id_question = '${updated.id}' returning *`
       )
       return question.rows[0]
     } catch (e) {
