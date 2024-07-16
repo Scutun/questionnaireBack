@@ -4,6 +4,7 @@ const modelTitle = require('../models/admin.title.model')
 const modelCode = require('../models/admin.codes.model')
 const modelQuestion = require('../models/admin.questions.model')
 const modelLogIn = require('../models/admin.logIn.model')
+const modelHeadline = require('../models/admin.headline.model')
 
 class adminController {
   //log in
@@ -13,6 +14,41 @@ class adminController {
       res.json({ allow: allow })
     } catch (e) {
       res.sendStatus(403)
+    }
+  }
+  //
+  //
+  //form CRUD
+  async createHeadline(req, res) {
+    try {
+      const newHeadline = await modelHeadline.addHeadline(req.body)
+      res.json({ newHeadline: newHeadline })
+    } catch (e) {
+      res.sendStatus(400)
+    }
+  }
+  async findHeadline(req, res) {
+    try {
+      const headline = await modelHeadline.getAllHeadline()
+      res.json({ newHeadline: headline })
+    } catch (e) {
+      res.sendStatus(404)
+    }
+  }
+  async renewHeadline(req, res) {
+    try {
+      const update = await modelHeadline.updateHeadline(req.body)
+      res.json({ update: update })
+    } catch (e) {
+      res.sendStatus(400)
+    }
+  }
+  async deletionHeadline(req, res) {
+    try {
+      const deletion = await modelHeadline.deleteHeadline(req.params.id)
+      res.json({ deletion: deletion })
+    } catch (e) {
+      res.sendStatus(404)
     }
   }
   //
