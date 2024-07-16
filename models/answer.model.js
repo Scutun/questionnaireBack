@@ -10,7 +10,7 @@ class answerModel {
         throw new Error()
       }
       for (let i = 0; i < questionIdArr.length; i++) {
-        const answer = await db.query(`insert into answers(answer_code, fk_users_id, fk_questions_id) values ('${answerCodeArr[i]}', '${usersId}', '${questionIdArr[i]}');`)
+        await db.query(`insert into answers(answer_code, fk_users_id, fk_questions_id) values ('${answerCodeArr[i]}', '${usersId}', '${questionIdArr[i]}');`)
       }
       return usersId
     } catch (e) {
