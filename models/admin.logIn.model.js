@@ -16,7 +16,6 @@ class adminLogInModel {
       const token = jwt.sign({ email: info.email }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '4h' })
       return token
     } catch (e) {
-      console.log(e)
       throw new Error()
     }
   }

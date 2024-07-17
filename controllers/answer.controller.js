@@ -11,6 +11,14 @@ class questionsController {
       res.sendStatus(400)
     }
   }
+  async findAllQuestions(req, res) {
+    try {
+      const getQuestions = await modelQuestion.getQuestions()
+      res.json({ getQuestions: getQuestions })
+    } catch (e) {
+      res.sendStatus(404)
+    }
+  }
 }
 
 module.exports = new questionsController()
