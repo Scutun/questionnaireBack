@@ -13,7 +13,7 @@ class questionsController {
   }
   async findAllQuestions(req, res) {
     try {
-      const getQuestions = await modelQuestion.getQuestions()
+      const getQuestions = await model.getQuestions()
       res.json({ getQuestions: getQuestions })
     } catch (e) {
       res.sendStatus(404)
