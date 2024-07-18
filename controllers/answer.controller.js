@@ -19,6 +19,14 @@ class questionsController {
       res.sendStatus(404)
     }
   }
+  async questionsResult(req, res) {
+    try {
+      const getResult = await model.getResult(req.params.userId)
+      res.json(getResult)
+    } catch (e) {
+      res.sendStatus(404)
+    }
+  }
 }
 
 module.exports = new questionsController()
